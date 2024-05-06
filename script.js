@@ -76,3 +76,10 @@ document.addEventListener("scroll", function () {
     navcontent.classList.add("bg-gray-100");
   }
 });
+
+// animasi mengetik sendiri
+const typed = new Typed("#slogan", {
+  strings: ["mengerjakan soal kalkulus", "belajar kalkulus"],
+  typeSpeed: 100,
+  loop: true,
+});

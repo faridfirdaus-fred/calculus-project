@@ -22,6 +22,32 @@
       .gradient {
         background: linear-gradient(90deg, #30b424 0%, #70d2da 100%);
       }
+      .slower-bounce {
+        animation: bounce 4s infinite; /* Mengubah durasi menjadi 4 detik */
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          /* Mengurangi titik-titik kunci untuk membuat lompatan lebih pendek */
+          transform: translateY(-2%); /* Mengurangi jarak lompatan */
+          animation-timing-function: cubic-bezier(
+            0.8,
+            0,
+            1,
+            1
+          ); /* Membuat lompatan lebih lambat */
+        }
+        40%,
+        60% {
+          /* Menambah titik-titik kunci untuk mengatur saat lompatan terjadi */
+          transform: translateY(0);
+          animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+      }
     </style>
   </head>
   <body
@@ -108,7 +134,7 @@
       <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
     <!--Hero-->
-    <div class="pt-24" id="beranda">
+    <div class="pt-20" id="beranda">
       <div
         class="w-12/12 mx-auto lg:w-10/12 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center"
       >
@@ -116,24 +142,20 @@
         <div
           class="flex flex-col w-full md:w-1/2 justify-center items-start text-center md:text-left"
         >
-          <p class="uppercase tracking-loose w-full">
-            Selamat datang di Calcumat
+          <p id="welcome" class="uppercase tracking-loose w-full lg:text-lg">
+            Selamat datang di calcumat
           </p>
-          <h1 class="my-4 text-5xl font-bold leading-tight uppercase">
-            Membantu anda mengerjakan dan belajar kalkulus
+          <h1 class="my-4 text-3xl lg:text-5xl font-bold uppercase">
+            Membantu <span id="slogan"></span>
           </h1>
-          <p class="leading-normal text-2xl mb-8">
+          <p class="leading-normal text-md lg:text-xl mb-8" id="penjelasan">
             Sebuah Kalkulator yang membantu Anda menyelesaikan tugas-tugas
             kalkulus Anda.
           </p>
-          <button
-            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out uppercase"
-          >
-            Mulai hitung
-          </button>
         </div>
+
         <!--Right Col-->
-        <div class="w-full mx-auto md:w-1/2 py-6 text-center">
+        <div class="w-full slower-bounce mx-auto md:w-1/2 py-6 text-center">
           <img class="w-full z-50" src="img/math-svgrepo-com.svg" />
         </div>
       </div>
@@ -223,7 +245,11 @@
           <div
             class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow"
           >
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <a
+              href="#"
+              id="kkk"
+              class="flex flex-wrap no-underline hover:no-underline"
+            >
               <p class="w-full text-gray-600 text-xs md:text-sm px-6">
                 xGETTING STARTED
               </p>
@@ -336,7 +362,7 @@
         Action!
       </button>
     </section>
-    <!--Footer-->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script src="script.js"></script>
   </body>
