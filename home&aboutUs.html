@@ -20,7 +20,7 @@
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     <style>
       .gradient {
-        background: linear-gradient(90deg, #bd5518 0%, #daae51 100%);
+        background: linear-gradient(90deg, #30b424 0%, #70d2da 100%);
       }
     </style>
   </head>
@@ -44,7 +44,7 @@
               class="h-12 fill-current inline"
               alt="icon navbar"
             />
-            CALCUWIN
+            CALCUMAT
           </a>
         </div>
         <div class="block lg:hidden pr-4">
@@ -68,26 +68,36 @@
         >
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-black" href="#">HOME</a>
-            </li>
-            <li class="mr-3">
-              <a
-                class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                href="#"
-                >MATERI</a
+              <a class="inline-block py-2 px-4 text-black uppercase" href="#"
+                >Beranda</a
               >
             </li>
             <li class="mr-3">
               <a
-                class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4 uppercase"
                 href="#"
-                >ABOUT US</a
+                >Materi</a
+              >
+            </li>
+
+            <li class="mr-3">
+              <a
+                class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4 uppercase"
+                href="#"
+                >Contact</a
+              >
+            </li>
+            <li class="mr-3">
+              <a
+                class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4 uppercase"
+                href="#"
+                >Tentang kami</a
               >
             </li>
           </ul>
           <button
             id="navAction"
-            class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition duration-300 ease-in-out hover:scale-105"
+            class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition duration-300 ease-in-out hover:scale-105 border-b"
           >
             START CALCULATE
           </button>
@@ -104,17 +114,20 @@
         <div
           class="flex flex-col w-full md:w-1/2 justify-center items-start text-center md:text-left"
         >
-          <p class="uppercase tracking-loose w-full">Welcome to CALCUWIN</p>
+          <p class="uppercase tracking-loose w-full">
+            Selamat datang di Calcumat
+          </p>
           <h1 class="my-4 text-5xl font-bold leading-tight uppercase">
-            Empowering you to conquer calculus with ease!
+            Membantu anda mengerjakan dan belajar kalkulus
           </h1>
           <p class="leading-normal text-2xl mb-8">
-            A Calcuator that helps you to complete your calculus tasks
+            Sebuah Kalkulator yang membantu Anda menyelesaikan tugas-tugas
+            kalkulus Anda.
           </p>
           <button
-            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out uppercase"
           >
-            Calculate
+            Mulai hitung
           </button>
         </div>
         <!--Right Col-->
@@ -167,7 +180,7 @@
         <h2
           class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800"
         >
-          Title
+          Kalkulator
         </h2>
         <div class="w-full mb-4">
           <div
@@ -1053,89 +1066,7 @@
         >Background vector created by freepik - www.freepik.com</a
       >
     </footer>
-    <!-- jQuery if you need it
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  -->
-    <script>
-      var scrollpos = window.scrollY;
-      var header = document.getElementById("header");
-      var navcontent = document.getElementById("nav-content");
-      var navaction = document.getElementById("navAction");
-      var brandname = document.getElementById("brandname");
-      var toToggle = document.querySelectorAll(".toggleColour");
 
-      document.addEventListener("scroll", function () {
-        /*Apply classes for slide in bar*/
-        scrollpos = window.scrollY;
-
-        if (scrollpos > 10) {
-          header.classList.add("bg-white");
-          navaction.classList.remove("bg-white");
-          navaction.classList.add("gradient");
-          navaction.classList.remove("text-gray-800");
-          navaction.classList.add("text-white");
-          //Use to switch toggleColour colours
-          for (var i = 0; i < toToggle.length; i++) {
-            toToggle[i].classList.add("text-gray-800");
-            toToggle[i].classList.remove("text-white");
-          }
-          header.classList.add("shadow");
-          navcontent.classList.remove("bg-gray-100");
-          navcontent.classList.add("bg-white");
-        } else {
-          header.classList.remove("bg-white");
-          navaction.classList.remove("gradient");
-          navaction.classList.add("bg-white");
-          navaction.classList.remove("text-white");
-          navaction.classList.add("text-gray-800");
-          //Use to switch toggleColour colours
-          for (var i = 0; i < toToggle.length; i++) {
-            toToggle[i].classList.add("text-white");
-            toToggle[i].classList.remove("text-gray-800");
-          }
-
-          header.classList.remove("shadow");
-          navcontent.classList.remove("bg-white");
-          navcontent.classList.add("bg-gray-100");
-        }
-      });
-    </script>
-    <script>
-      /*Toggle dropdown list*/
-      /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-      var navMenuDiv = document.getElementById("nav-content");
-      var navMenu = document.getElementById("nav-toggle");
-
-      document.onclick = check;
-      function check(e) {
-        var target = (e && e.target) || (event && event.srcElement);
-
-        //Nav Menu
-        if (!checkParent(target, navMenuDiv)) {
-          // click NOT on the menu
-          if (checkParent(target, navMenu)) {
-            // click on the link
-            if (navMenuDiv.classList.contains("hidden")) {
-              navMenuDiv.classList.remove("hidden");
-            } else {
-              navMenuDiv.classList.add("hidden");
-            }
-          } else {
-            // click both outside link and outside menu, hide menu
-            navMenuDiv.classList.add("hidden");
-          }
-        }
-      }
-      function checkParent(t, elm) {
-        while (t.parentNode) {
-          if (t == elm) {
-            return true;
-          }
-          t = t.parentNode;
-        }
-        return false;
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
