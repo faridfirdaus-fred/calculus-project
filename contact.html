@@ -20,40 +20,40 @@
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     <style>
       .gradient {
-        background: linear-gradient(90deg, #30b424 0%, #70d2da 100%);
+        background: linear-gradient(90deg, #ffa600 0%, hsl(209, 49%, 67%) 100%);
       }
     </style>
   </head>
   <body
-    class="leading-normal tracking-normal text-white overflow-y-hidden"
+    class="overflow-y-hidden leading-normal tracking-normal text-white"
     style="font-family: 'Source Sans Pro', sans-serif"
   >
     <!--Nav-->
-    <nav id="header" class="fixed w-full z-30 top-0 text-white gradient">
+    <nav id="header" class="fixed top-0 z-30 w-full text-white gradient">
       <div
-        class="container mx-auto flex flex-wrap items-center justify-between mt-0 py-2"
+        class="container flex flex-wrap items-center justify-between py-2 mx-auto mt-0"
       >
-        <div class="pl-4 flex items-center">
+        <div class="flex items-center pl-4">
           <a
-            class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+            class="text-2xl font-bold text-white no-underline toggleColour hover:no-underline lg:text-4xl"
             href="#"
           >
             <!--Icon from: http://www.potlabicons.com/ -->
             <img
               src="img/math-svgrepo-com.svg"
-              class="h-12 fill-current inline"
+              class="inline h-12 fill-current"
               alt="icon navbar"
             />
             CALCUMAT
           </a>
         </div>
-        <div class="block lg:hidden pr-4">
+        <div class="block pr-4 lg:hidden">
           <button
             id="nav-toggle"
-            class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+            class="flex items-center p-1 text-pink-800 transition duration-300 ease-in-out transform hover:scale-105 hover:text-gray-900 focus:outline-none focus:shadow-outline"
           >
             <svg
-              class="fill-current h-6 w-6"
+              class="w-6 h-6 fill-current"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -63,20 +63,20 @@
           </button>
         </div>
         <div
-          class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+          class="z-20 flex-grow hidden w-full p-4 mt-2 text-black bg-white lg:flex lg:items-center lg:w-auto lg:mt-0 lg:bg-transparent lg:p-0"
           id="nav-content"
         >
-          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+          <ul class="items-center justify-end flex-1 list-reset lg:flex">
             <li class="mr-3">
               <a
-                class="inline-block py-2 px-4 text-black uppercase"
-                href="#beranda"
+                class="inline-block px-4 py-2 text-black uppercase hover:text-white"
+                href="index.html#beranda"
                 >Beranda</a
               >
             </li>
             <li class="mr-3">
               <a
-                class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4 uppercase"
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
                 href="#"
                 >Materi</a
               >
@@ -84,14 +84,14 @@
 
             <li class="mr-3">
               <a
-                class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4 uppercase"
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
                 href="#"
                 >Kontak
               </a>
             </li>
             <li class="mr-3">
               <a
-                class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4 uppercase"
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
                 href="#"
                 >Tentang kami</a
               >
@@ -99,15 +99,17 @@
           </ul>
           <button
             id="navAction"
-            class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition duration-300 ease-in-out hover:scale-105 border border-slat-300 uppercase"
+            class="px-8 py-4 mx-auto mt-4 font-bold text-gray-800 uppercase transition duration-300 ease-in-out transform bg-white border rounded-full shadow opacity-75 lg:mx-0 lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105 border-slat-300"
           >
             Mulai hitung
           </button>
         </div>
       </div>
-      <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+      <hr class="py-0 my-0 border-b border-gray-100 opacity-25" />
     </nav>
-    <!--Hero-->
+    <!-- Contact Section Start  -->
+    <section id="kontak"></section>
+    <!-- Contact Section End  -->
     <script src="script.js"></script>
   </body>
 </html>

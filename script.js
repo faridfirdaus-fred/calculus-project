@@ -1,12 +1,12 @@
 /*Toggle dropdown list*/
 /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
-var navMenuDiv = document.getElementById("nav-content");
-var navMenu = document.getElementById("nav-toggle");
+let navMenuDiv = document.getElementById("nav-content");
+let navMenu = document.getElementById("nav-toggle");
 
 document.onclick = check;
 function check(e) {
-  var target = (e && e.target) || (event && event.srcElement);
+  let target = (e && e.target) || (event && event.srcElement);
 
   //Nav Menu
   if (!checkParent(target, navMenuDiv)) {
@@ -34,12 +34,12 @@ function checkParent(t, elm) {
   return false;
 }
 
-var scrollpos = window.scrollY;
-var header = document.getElementById("header");
-var navcontent = document.getElementById("nav-content");
-var navaction = document.getElementById("navAction");
-var brandname = document.getElementById("brandname");
-var toToggle = document.querySelectorAll(".toggleColour");
+let scrollpos = window.scrollY;
+let header = document.getElementById("header");
+let navcontent = document.getElementById("nav-content");
+let navaction = document.getElementById("navAction");
+let brandname = document.getElementById("brandname");
+let toToggle = document.querySelectorAll(".toggleColour");
 
 document.addEventListener("scroll", function () {
   /*Apply classes for slide in bar*/
@@ -52,7 +52,7 @@ document.addEventListener("scroll", function () {
     navaction.classList.remove("text-gray-800");
     navaction.classList.add("text-white");
     //Use to switch toggleColour colours
-    for (var i = 0; i < toToggle.length; i++) {
+    for (let i = 0; i < toToggle.length; i++) {
       toToggle[i].classList.add("text-gray-800");
       toToggle[i].classList.remove("text-white");
     }
@@ -66,7 +66,7 @@ document.addEventListener("scroll", function () {
     navaction.classList.remove("text-white");
     navaction.classList.add("text-gray-800");
     //Use to switch toggleColour colours
-    for (var i = 0; i < toToggle.length; i++) {
+    for (let i = 0; i < toToggle.length; i++) {
       toToggle[i].classList.add("text-white");
       toToggle[i].classList.remove("text-gray-800");
     }
@@ -75,6 +75,11 @@ document.addEventListener("scroll", function () {
     navcontent.classList.remove("bg-white");
     navcontent.classList.add("bg-gray-100");
   }
+});
+
+// nav button
+document.getElementById("navAction").addEventListener("click", function () {
+  window.location.href = "determinan.html#kalkulator-determinan";
 });
 
 // animasi mengetik sendiri
