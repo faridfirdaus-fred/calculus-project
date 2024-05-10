@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Calulator calculus</title>
+    <meta name="description" content="Simple landind page" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <!--Replace with your tailwind.css once created-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
+      rel="stylesheet"
+    />
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <style>
+
+      .gradient {
+        background: linear-gradient(90deg, #ffa600 0%, hsl(209, 49%, 67%) 100%);
+      }
+
+      body {
+        background: linear-gradient(90deg, #ffa600 0%, hsl(209, 49%, 67%) 100%);
+      }
+
+      main { 
+            margin-top: 40px;
+            margin-left: 10px;
+            justify-content:center;
+        }
+
+        section {
+            margin-top: 120px;
+        }
+
+        p {
+            padding: 0;
+            margin: 10px;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: large;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: midnightblue;
+            color: beige;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: blue;
+            color: beige;
+            transition: 0.2s ease-in-out;
+        }
+
+        img {
+            max-width: 30%;
+            height: auto;
+            margin-left: 10px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <!--Nav-->
+    <nav id="header" class="fixed top-0 z-30 w-full text-white gradient">
+      <div
+        class="container flex flex-wrap items-center justify-between py-2 mx-auto mt-0"
+      >
+        <div class="flex items-center pl-4">
+          <a
+            class="text-2xl font-bold text-white no-underline toggleColour hover:no-underline lg:text-4xl"
+            href="#"
+          >
+            <!--Icon from: http://www.potlabicons.com/ -->
+            <img
+              src="img/math-svgrepo-com.svg"
+              class="inline h-12 fill-current"
+              alt="icon navbar"
+            />
+            CALCUMAT
+          </a>
+        </div>
+        <div class="block pr-4 lg:hidden">
+          <button
+            id="nav-toggle"
+            class="flex items-center p-1 text-pink-800 transition duration-300 ease-in-out transform hover:scale-105 hover:text-gray-900 focus:outline-none focus:shadow-outline"
+          >
+            <svg
+              class="w-6 h-6 fill-current"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="z-20 flex-grow hidden w-full p-4 mt-2 text-black bg-white lg:flex lg:items-center lg:w-auto lg:mt-0 lg:bg-transparent lg:p-0"
+          id="nav-content"
+        >
+          <ul class="items-center justify-end flex-1 list-reset lg:flex">
+            <li class="mr-3">
+              <a
+                class="inline-block px-4 py-2 text-black uppercase hover:text-white"
+                href="index.html#beranda"
+                >Beranda</a
+              >
+            </li>
+            <li class="mr-3">
+              <a
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
+                href="#"
+                >Materi</a
+              >
+            </li>
+
+            <li class="mr-3">
+              <a
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
+                href="#"
+                >Kontak
+              </a>
+            </li>
+            <li class="mr-3">
+              <a
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
+                href="#"
+                >Tentang kami</a
+              >
+            </li>
+          </ul>
+          <button
+            id="navAction"
+            class="px-8 py-4 mx-auto mt-4 font-bold text-gray-800 uppercase transition duration-300 ease-in-out transform bg-white border rounded-full shadow opacity-75 lg:mx-0 lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105 border-slat-300"
+          >
+            Mulai hitung
+          </button>
+        </div>
+      </div>
+      <hr class="py-0 my-0 border-b border-gray-100 opacity-25" />
+    </nav>
+    <!-- Contact Section Start  -->
+    <section id="kontak"></section>
+    <!-- Contact Section End  -->
+    <script src="script.js"></script>
+        <main>
+            <section>
+                <p>Hai Maters! Siapa disini yang masih ingat tentang materi determinan matriks? Biar segar kembali yuk kita flashback! Bayangkan determinan matriks seperti kode rahasia dari matriks itu sendiri. Nah, dengan tahu nilai determinannya, kita seolah punya kunci untuk membuka banyak informasi tersembunyi di dalam matriks tersebut. Yuk kita kupas bareng-bareng materi seru ini. Siap-siap untuk menjelajah!</p>
+                <h2>A. Pengertian Determinan Matriks</h2>
+                <p> Determinan matriks merupakan selisih antara perkalian elemen-elemen pada diagonal utama dengan perkalian elemen-elemen pada diagonal sekunder. Dan hanya dapat dicari dengan matriks persegi. Determinan dari matriks A dapat ditulis det(A) atau |A|. Yang mana determinan matriks dapat dianggap secara intuitif sebagai "ukuran" matriks. Dalam matriks 2x2, determinan adalah hasil kali elemen diagonal utama dikurangi hasil kali elemen diagonal kedua. Namun, rumus untuk matriks 3x3 itu lebih kompleks. </p>
+
+                <h2>B. Sifat-Sifat Determinan Matriks</h2>
+                <p style="margin-bottom: 10px;">Tau gak Maters ? sama halnya karakteristik unik dalam operasi fungsi lainnya, determinan matriks juga punya sifat-sifat uniknya tersendiri loh! Yuk, kita cek bareng-bareng gimana sifat-sifat ini bisa bantu kita jadi pro matriks.</p>
+                <img src="sifat-sifat.jpg" alt="sifat-sifat determinan matriks">
+
+                <h2 style="margin-top: 10px;">C. Penggunaan Determinan Matriks</h2>
+                <p>Ada yang pernah kepikiran nggak, buat apa sih sebenernya determinan matriks itu? Jadi sebenernya determinan matriks tuh nggak cuma sekedar angka di dalam dunia matematika. Ada banyak banget manfaatnya lho! Jadi, yuk kita bahas bareng-bareng apa aja sih yang bisa kita lakuin dengan determinan matriks ini.</p>
+                <p>1. Pemecahan Sistem Persamaan Linear: Determinan digunakan untuk menentukan apakah suatu sistem persamaan linear memiliki solusi unik, tidak ada solusi, atau banyak solusi.</p>
+                <p>2. Transformasi Linear: Dalam geometri, determinan matriks digunakan untuk mengukur perubahan skala yang dihasilkan oleh transformasi linear.</p>
+                <p>3. Perhitungan Area dan Volume: Dalam geometri, determinan matriks digunakan untuk menghitung luas bidang atau volume objek dalam berbagai dimensi.</p>
+                <p>4. Analisis Struktur: Determinan matriks digunakan dalam analisis struktur untuk menentukan stabilitas struktur dan beban yang dapat ditanggung olehnya.</p>
+                <p>5. Analisis Data: Dalam analisis data, determinan matriks digunakan untuk menyelesaikan masalah regresi linear dan menentukan apakah suatu set data saling terkait atau tidak.</p>
+                <p>6. Kompresi Gambar: Beberapa metode menggunakan determinan matriks untuk mengurangi ukuran file gambar tanpa mengurangi kualitas gambar.</p>
+                <p>7. Pengolahan Sinyal: Dalam pengolahan sinyal, determinan matriks digunakan untuk proses seperti filtering, modulasi, dan pemrosesan sinyal lainnya.</p>
+                <p>8. Optimisasi: Di bidang optimisasi, determinan matriks digunakan oleh sejumlah algoritma untuk menentukan arah pergerakan yang optimal untuk mencari solusi masalah.</p>
+                <p>9. Analisis Keuangan: Dalam analisis keuangan, determinan matriks dapat digunakan untuk menentukan bagaimana variabel ekonomi dalam model ekonometrika berhubungan satu sama lain.</p>
+                <p>10. Perencanaan Jaringan: Dalam bidang TI, determinan matriks digunakan untuk perencanaan jaringan komunikasi untuk menjamin kinerja dan kestabilan jaringan.</p>
+                <p>11. Perancangan Permainan: Determinan matriks dapat digunakan dalam perancangan permainan komputer untuk membuat efek visual dan mengatur jalan permainan.</p>
+                <p>12. Biologi dan Kimia: Determinan matriks digunakan dalam banyak model matematika biologi dan kimia. Ini termasuk memodelkan dinamika populasi dan reaksi kimia.</p>
+                <p style="margin-top: 7px;">Sekarang dengan konsep determinan matriks ini, kita bisa lihat betapa serunya matematika bisa diaplikasikan dalam kehidupan sehari-hari. Gimana? udah pada ngerasa kebayang belum nih? Ternyata matriks ini bisa kita temuin di mana aja, dari dunia finansial sampe desain grafis, pokoknya lengkap deh! Apakah Maters tertarik untuk menjelajah lebih dalam lagi?</p>
+
+                <h2>D. Jenis-Jenis Determinan Matriks</h2>
+                <p style="font-weight: bold;">1. Ordo 2x2</p>
+                <p style="margin-bottom: 10px;">Matriks ordo 2x2 adalah matriks persegi dengan dua baris dan dua kolom. Jenis matriks ini biasanya memiliki format sebagai berikut:</p>
+                <img src="ordo2.jpg" alt="Ordo 2x2">
+                <p style="font-weight: bold;">2. Ordo 3x3</p>
+                <p style="margin-bottom: 10px;">Dalam kasus matriks ordo 3x3, determinan dihitung dengan menggunakan rumus yang melibatkan elemen-elemen matriks tersebut. Jenis matriks ini biasanya memiliki format sebagai berikut:</p>
+                <img src="ordo3.jpg" alt="Ordo 3x3">
+
+                <p style="margin-bottom: 10px;">Tentunya sudah semakin jelas ya, Maters! Semoga penjelasan tadi membantu memperdalam pemahaman kita tentang determinan matriks.</p>
+                <p style="font-weight: bold;">Biar Maters lebih paham dengan materinya, yuk kita kerjain latihan soal berikut ini!</p>
+                <a href="/.html" class="button">Mulai Latihan</a>
+            </section>
+        </main>
+
+</body>
+</html>
