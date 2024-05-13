@@ -218,6 +218,22 @@
     </footer>
   
     <!-- JavaScript untuk toggle menu -->
+  <script>
+  window.addEventListener('scroll', function() {
+    var navAction = document.getElementById('navAction');
+    var scrollPosition = window.scrollY;
+
+    // Ubah warna tombol jika posisi scroll lebih dari 100px dari atas halaman
+    if(scrollPosition > 100) {
+      navAction.classList.add('bg-blue-500', 'text-white');
+      navAction.classList.remove('bg-white', 'text-black');
+    } else {
+      navAction.classList.remove('bg-blue-500', 'text-white');
+      navAction.classList.add('bg-white', 'text-black');
+    }
+  });
+</script>
+
   
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
