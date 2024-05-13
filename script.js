@@ -34,12 +34,12 @@ function checkParent(t, elm) {
   return false;
 }
 
- var scrollpos = window.scrollY;
- var header = document.getElementById("header");
- var navcontent = document.getElementById("nav-content");
- var navaction = document.getElementById("navAction");
- var brandname = document.getElementById("brandname");
- var toToggle = document.querySelectorAll(".toggleColour");
+ let scrollpos = window.scrollY;
+ let header = document.getElementById("header");
+ let navcontent = document.getElementById("nav-content");
+ let navaction = document.getElementById("navAction");
+ let brandname = document.getElementById("brandname");
+ let toToggle = document.querySelectorAll(".toggleColour");
  let navlist = document.querySelectorAll('.navlist')
 
  document.addEventListener("scroll", function () {
@@ -57,7 +57,7 @@ function checkParent(t, elm) {
      });
     
      //Use to switch toggleColour colours
-     for (var i = 0; i < toToggle.length; i++) {
+     for (let i = 0; i < toToggle.length; i++) {
        toToggle[i].classList.add("text-gray-800");
        toToggle[i].classList.remove("text-white");
      }
@@ -75,7 +75,7 @@ function checkParent(t, elm) {
 
      navaction.classList.add("text-gray-800");
      //Use to switch toggleColour colours
-     for (var i = 0; i < toToggle.length; i++) {
+     for (let i = 0; i < toToggle.length; i++) {
        toToggle[i].classList.add("text-white");
        toToggle[i].classList.remove("text-gray-800");
      }
