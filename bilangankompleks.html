@@ -10,6 +10,7 @@
     />
   </head>
   <body class="flex flex-col items-center justify-center h-screen bg-gray-200">
+    <section id="bilKompleks">
     <div class="p-8 bg-gray-300 rounded-lg shadow-md">
       <h1 class="mb-4 text-2xl">Kalkulator Bilangan Kompleks</h1>
       <form id="complexCalcForm">
@@ -28,6 +29,7 @@
       </form>
       <div id="result" class="mt-4"></div>
     </div>
+    </section>
     <script>
       function calculateComplexOperation(operationString) {
         const parts = operationString.split(/(?=[+-])/);
