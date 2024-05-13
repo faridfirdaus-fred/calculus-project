@@ -19,98 +19,100 @@
     />
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     <style>
-        .gradient {
-            background: linear-gradient(90deg, #ffa600 0%, hsl(209, 49%, 67%) 100%);
-        }
+      .gradient {
+        background: linear-gradient(90deg, #ffa600 0%, hsl(209, 49%, 67%) 100%);
+      }
 
-        body {
-            background: linear-gradient(90deg, #ffa600 0%, hsl(209, 49%, 67%) 100%);
-            height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            display: grid;
-        }
+      body {
+        background: linear-gradient(90deg, #ffa600 0%, hsl(209, 49%, 67%) 100%);
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        display: grid;
+      }
 
-        h2 {
-            text-align: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: larger;
-            margin-bottom: 30px;
-            color: black;
-        }
+      h2 {
+        text-align: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: larger;
+        margin-bottom: 30px;
+        color: black;
+      }
 
-        h1 {
-            margin-bottom: 2rem;
-        }
+      h1 {
+        margin-bottom: 2rem;
+      }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 24rem;
-            gap: 1rem;
-            justify-content: center;
-            margin: 0 auto;
-        }
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 24rem;
+        gap: 1rem;
+        justify-content: center;
+        margin: 0 auto;
+      }
 
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
 
-        input, email, select, textarea {
-            padding: 1.4rem;
-            background: transparent;
-            border: 1px solid black;
-            color: black;
-        }
-         
-        input[name="Nama"]::placeholder {
-            color: wheat;
-        }
+      input,
+      email,
+      select,
+      textarea {
+        padding: 1.4rem;
+        background: transparent;
+        border: 1px solid black;
+        color: black;
+      }
 
-        input[name="Email"]::placeholder {
-            color: wheat;
-        }
+      input[name="Nama"]::placeholder {
+        color: wheat;
+      }
 
-        textarea[name="Pesan"]::placeholder {
-            color: wheat;
-        }
+      input[name="Email"]::placeholder {
+        color: wheat;
+      }
 
-        .container {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            text-align: center; 
-        }
+      textarea[name="Pesan"]::placeholder {
+        color: wheat;
+      }
 
-        section { 
-            margin-top: 60px;
-        }
+      .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
 
-        button {
-            display: inline-block;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            background-color: midnightblue;
-            color: beige;
-        }
+      section {
+        margin-top: 60px;
+      }
 
-        button:hover {
-            background-color: blue;
-            color: beige;
-            transition: 0.2s ease-in-out;
-        }
+      button {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: midnightblue;
+        color: beige;
+      }
+
+      button:hover {
+        background-color: blue;
+        color: beige;
+        transition: 0.2s ease-in-out;
+      }
     </style>
-    
   </head>
   <body
     class="overflow-y-hidden leading-normal tracking-normal text-white"
     style="font-family: 'Source Sans Pro', sans-serif"
   >
     <!--Nav-->
-    <nav id="header" class="fixed top-0 z-30 w-full text-white gradient">
+    <nav id="header" class="fixed top-0 z-30 w-full text-white">
       <div
         class="container flex flex-wrap items-center justify-between py-2 mx-auto mt-0"
       >
@@ -131,7 +133,7 @@
         <div class="block pr-4 lg:hidden">
           <button
             id="nav-toggle"
-            class="flex items-center p-1 text-pink-800 transition duration-300 ease-in-out transform hover:scale-105 hover:text-gray-900 focus:outline-none focus:shadow-outline"
+            class="flex items-center p-1 text-pink-800 transition duration-300 ease-in-out transform hover:text-gray-900 focus:outline-none focus:shadow-outline hover:scale-105"
           >
             <svg
               class="w-6 h-6 fill-current"
@@ -150,14 +152,14 @@
           <ul class="items-center justify-end flex-1 list-reset lg:flex">
             <li class="mr-3">
               <a
-                class="inline-block px-4 py-2 text-black uppercase hover:text-white"
+                class="inline-block px-4 py-2 text-black uppercase opacity-80 hover:opacity-100"
                 href="index.html#beranda"
                 >Beranda</a
               >
             </li>
             <li class="mr-3">
               <a
-                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-gray-800 hover:text-underline opacity-80 hover:opacity-100"
                 href="#"
                 >Materi</a
               >
@@ -165,14 +167,14 @@
 
             <li class="mr-3">
               <a
-                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
-                href="#"
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-gray-800 hover:text-underline opacity-80 hover:opacity-100"
+                href="kontak.html#kontak"
                 >Kontak
               </a>
             </li>
             <li class="mr-3">
               <a
-                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-white"
+                class="inline-block px-4 py-2 text-black no-underline uppercase hover:text-gray-800 hover:text-underline opacity-80 hover:opacity-100"
                 href="#"
                 >Tentang kami</a
               >
@@ -194,22 +196,21 @@
     <script src="script.js"></script>
 
     <section id="kontak">
-        <div class="container">
-            <h2>Hubungi kami</h2>
-            <form action="https://formspree.io/f/xzbnwbvj" method="POST">
-                <input type="text" name="Nama" placeholder="Nama Lengkap" required>
-                <input type="email" name="Email" placeholder="Email" required>
-                <select name="Status">
-                    <option>Mahasiswa</option>
-                    <option>Pelajar</option>
-                    <option>Pengajar</option>
-                    <option>Lainnya</option>
-                </select>
-                <textarea name="Pesan" placeholder="Pesan" required></textarea>
-                <button type="submit">Kirim</button>
-            </form>
-        </div>
-    </section>    
-    
+      <div class="container">
+        <h2>Hubungi kami</h2>
+        <form action="https://formspree.io/f/xzbnwbvj" method="POST">
+          <input type="text" name="Nama" placeholder="Nama Lengkap" required />
+          <input type="email" name="Email" placeholder="Email" required />
+          <select name="Status">
+            <option>Mahasiswa</option>
+            <option>Pelajar</option>
+            <option>Pengajar</option>
+            <option>Lainnya</option>
+          </select>
+          <textarea name="Pesan" placeholder="Pesan" required></textarea>
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+    </section>
   </body>
 </html>

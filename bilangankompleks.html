@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Bilangan Kompleks</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex flex-col items-center justify-center h-screen bg-gray-200">
+    <div class="p-8 bg-gray-300 rounded-lg shadow-md">
+      <h1 class="mb-4 text-2xl">Kalkulator Bilangan Kompleks</h1>
+      <form id="complexCalcForm">
+        <input
+          type="text"
+          id="complexInput"
+          placeholder="Masukkan pertanyaan bilangan kompleks"
+          class="w-full px-2 py-1 mb-4 border border-gray-300 rounded-md focus:outline-none"
+        />
+        <button
+          type="submit"
+          class="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none"
+        >
+          Hitung
+        </button>
+      </form>
+      <div id="result" class="mt-4"></div>
+    </div>
+    <script>
+      function calculateComplexOperation(operationString) {
+        const parts = operationString.split(/(?=[+-])/);
+        let resultReal = 0;
+        let resultImaginary = 0;
+
+        parts.forEach((part) => {
+          const complexNumber = parseComplexNumber(part);
+          if (complexNumber) {
+            resultReal += complexNumber.realPart;
+            resultImaginary += complexNumber.imaginaryPart;
+          }
+        });
+
+        return { resultReal, resultImaginary };
+      }
+
+      document
+        .getElementById("complexCalcForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const input = document.getElementById("complexInput").value;
+
+          try {
+            const result = calculateComplexOperation(input);
+            document.getElementById(
+              "result"
+            ).innerHTML = `Hasil: ${result.resultReal} + ${result.resultImaginary}i`;
+          } catch (error) {
+            document.getElementById("result").innerHTML =
+              "Format input tidak valid";
+          }
+        });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
