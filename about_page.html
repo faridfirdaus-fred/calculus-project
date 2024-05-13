@@ -218,27 +218,7 @@
     </footer>
   
     <!-- JavaScript untuk toggle menu -->
-    <script>
-  window.addEventListener('scroll', function() {
-    var navAction = document.getElementById('navAction');
-    var scrollPosition = window.scrollY;
-
-    // Dapatkan warna latar belakang utama
-    var body = document.body;
-    var computedStyle = window.getComputedStyle(body);
-    var backgroundColor = computedStyle.getPropertyValue('background-color');
-
-    // Ubah warna tombol sesuai dengan warna latar belakang utama
-    if(scrollPosition > 10) {
-      navAction.style.backgroundColor = backgroundColor;
-      navAction.style.color = '#FFFFFF'; // Set warna teks menjadi putih
-    } else {
-      navAction.style.backgroundColor = '#3C6D79'; // Kembali ke warna latar belakang awal
-      navAction.style.color = '#000000'; // Kembali ke warna teks awal
-    }
-  });
-</script>
-
+    
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script src="script.js"></script>
