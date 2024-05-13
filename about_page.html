@@ -220,21 +220,31 @@
     <!-- JavaScript untuk toggle menu -->
 <script>
   document.addEventListener("scroll", function () {
-    /*Apply classes for slide in bar*/
     var scrollpos = window.scrollY;
-    // Tambahkan logika JavaScript Anda di sini
-    // Misalnya, Anda dapat menambahkan kelas CSS ke elemen sesuai dengan posisi scroll
+    var navAction = document.getElementById("navAction");
+
+    // Ubah warna tombol saat posisi scroll melebihi 10 piksel
     if (scrollpos > 10) {
-      // Lakukan sesuatu ketika pengguna menscroll lebih dari 10 piksel
+      navAction.classList.add("#3C6D79");
     } else {
-      // Lakukan sesuatu ketika pengguna menscroll kurang dari 10 piksel
+      navAction.classList.remove("#ffffff");
     }
   });
 </script>
 
-    
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<!-- Sisipkan kelas CSS untuk warna tombol yang diinginkan -->
+<style>
+  /* Tambahkan definisi kelas CSS untuk warna tombol yang diinginkan */
+  .warna-yang-diinginkan {
+    background-color: #3C6D79; /* Ganti dengan warna yang diinginkan */
+    color: #ffffff; /* Ganti dengan warna teks yang sesuai */
+    /* Tambahkan properti CSS lainnya jika diperlukan */
+  }
+</style>
 
-    <script src="script.js"></script>
-  </body>
-  </html>
+<!-- Sisipkan skrip JS lainnya dan skrip eksternal jika diperlukan -->
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
