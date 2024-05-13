@@ -217,33 +217,60 @@
       </div>
     </footer>
   
-    <!-- JavaScript untuk toggle menu -->
+  <!-- JavaScript untuk toggle menu -->
 <script>
-  document.addEventListener("scroll", function () {
-    var scrollpos = window.scrollY;
-    var navAction = document.getElementById("navAction");
+  let scrollpos = window.scrollY;
+  let header = document.getElementById("header");
+  let navcontent = document.getElementById("nav-content");
+  let navaction = document.getElementById("navAction");
+  let brandname = document.getElementById("brandname");
+  let toToggle = document.querySelectorAll(".toggleColour");
+  let navlist = document.querySelectorAll('.navlist');
 
-    // Ubah warna tombol saat posisi scroll melebihi 10 piksel
+  document.addEventListener("scroll", function () {
+    /*Apply classes for slide in bar*/
+    scrollpos = window.scrollY;
+
     if (scrollpos > 10) {
-      navAction.classList.add("#3C6D79");
+      header.classList.add("bg-white");
+      navaction.classList.remove("bg-white");
+      navaction.classList.add("bg-primary");
+      navaction.classList.remove("text-gray-800");
+      navaction.classList.add("text-white");
+      navlist.forEach(function (element) {
+        element.classList.remove("lg:text-white");
+      });
+
+      // Use to switch toggleColour colours
+      for (let i = 0; i < toToggle.length; i++) {
+        toToggle[i].classList.add("text-gray-800");
+        toToggle[i].classList.remove("text-white");
+      }
+      header.classList.add("shadow");
+      navcontent.classList.remove("bg-gray-100");
+      navcontent.classList.add("bg-white");
     } else {
-      navAction.classList.remove("#ffffff");
+      header.classList.remove("bg-white");
+      navaction.classList.remove("bg-primary");
+      navaction.classList.add("bg-white");
+      navaction.classList.remove("text-white");
+      navlist.forEach(function (element) {
+        element.classList.add("lg:text-white");
+      });
+
+      navaction.classList.add("text-gray-800");
+      // Use to switch toggleColour colours
+      for (let i = 0; i < toToggle.length; i++) {
+        toToggle[i].classList.add("text-white");
+        toToggle[i].classList.remove("text-gray-800");
+      }
+
+      header.classList.remove("shadow");
+      navcontent.classList.remove("bg-white");
+      navcontent.classList.add("bg-gray-100");
     }
   });
 </script>
-
-<!-- Sisipkan kelas CSS untuk warna tombol yang diinginkan -->
-<style>
-  /* Tambahkan definisi kelas CSS untuk warna tombol yang diinginkan */
-  .warna-yang-diinginkan {
-    background-color: #3C6D79; /* Ganti dengan warna yang diinginkan */
-    color: #ffffff; /* Ganti dengan warna teks yang sesuai */
-    /* Tambahkan properti CSS lainnya jika diperlukan */
-  }
-</style>
-
-<!-- Sisipkan skrip JS lainnya dan skrip eksternal jika diperlukan -->
-<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
