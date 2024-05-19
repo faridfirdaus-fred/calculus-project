@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Calulator calculus</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"/>
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <style>
+      body {
+        background: #3C6D79;
+        margin: 0;
+        padding: 20px;
+        display: grid;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      h1 {
+        color: white;
+        font-weight: bold;
+        font-size: 200%;
+        text-align: center;
+        margin-top: 15px;
+      }
+      h2 {
+        margin-bottom: 45px;
+        color: black;
+        font-weight: bold;
+        font-size: 120%;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .choices {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .answer-button {
+        display: grid;
+        width: 100%;
+        padding: 5px 10px;
+        margin-bottom: 0px;
+        background-color: #ff7f50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .answer-button:hover {
+        background-color: #ff6347;
+      }
+      .answer-button.selected {
+        background-color: #4c6daf;
+      }
+      .answer {
+        margin-top: 2em;
+        font-weight: bold;
+        text-align: center;
+      }
+      .correct-answer {
+        color: green;
+      }
+      .wrong-answer {
+        color: red;
+      }
+      button {
+        padding: 5px 15px;
+        margin-top: 15px;
+        background-color: midnightblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: blue;
+      }
+      .button-container {
+        text-align: center;
+      }
+      .button-container button {
+        margin-inline: 5px;
+        display: inline-block;
+      }
+      .center-button {
+        display: block;
+        margin: 0 auto;
+        margin-top: 15px;
+      }
+      #timer {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 15px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 20px;
+        background-color: #ff7f50;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .start-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 350px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 20px;
+        width: 300px;
+        margin: auto;
+        margin-top: 30px;
+      }
+      .card {
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 20px;
+        height: 350px;
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 30px;
+        position: relative;
+        background-color: #fff;
+      }
+      .question {
+        margin-bottom: 0;
+      }
+      .difficulty {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 10px;
+        font-weight: bold;
+      }
+      .card[data-difficulty="mudah"] .difficulty {
+        color: green;
+      }
+      .card[data-difficulty="sedang"] .difficulty {
+        color: orange;
+      }
+      .card[data-difficulty="sulit"] .difficulty {
+        color: red;
+      }
+      #score {
+        text-align: center;
+        margin-top: 20px;
+        color: white;
+        font-weight: bold;
+      }
+      .matrix-table {
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .matrix-table td {
+        border: 1px solid #000;
+        padding: 5px;
+        text-align: center;
+        min-width: 30px; /* Lebar minimum sel untuk mempertahankan keseimbangan */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>CALQUIZ</h1>
+      <div id="timer">Waktu 15:00</div>
+      <div id="quiz" style="display:none;"></div>
+      <div id="answer" style="display:none;"></div>
+      <button id="submitButton" onclick="checkAnswers()" style="display:none;">Selesai</button>
+      <div id="result" style="display:none;"></div>
+      <div id="score" style="display:none;"></div>
+    </div>
+
+    <script>
+      const questions = [
+        {
+          question: 'Matriks apa yang memiliki determinan?',
+          choices: ['Matriks persegi', 'Matriks identitas', 'Matriks nol'],
+          correctAnswer: 'Matriks persegi',
+          selectedAnswer: null,
+          difficulty: 'mudah'
+        },
+        {
+          question: 'Apa yang terjadi dengan determinan matriks jika dua baris atau kolomnya ditukar?',
+          choices: ['Menjadi nol', 'Negatif dari determinan asli', 'Menjadi dua kali lipat'],
+          correctAnswer: 'Negatif dari determinan asli',
+          selectedAnswer: null,
+          difficulty: 'mudah'
+        },
+        {
+          question: 'Jika determinan matriks A adalah 5 dan determinan matriks B adalah 2, maka determinan matriks hasil perkalian A dan B adalah?',
+          choices: ['4', '10', '8', '0'],
+          correctAnswer: '10',
+          selectedAnswer: null,
+          difficulty: 'mudah'
+        },
+        {
+          question: 'Untuk matriks persegi A, jika determinan(A) = -3, maka determinan dari transpose(A) adalah?',
+          choices: ['-3', '3', '0', '2'],
+          correctAnswer: '3',
+          selectedAnswer: null,
+          difficulty: 'mudah'
+        },
+        {
+          question: 'Apa yang dimaksud dengan determinan dalam aljabar linear?',
+          choices: ['Hasil perkalian elemen dalam matriks', 'Operasi yang menghasilkan matriks transpos', 'Nilai skalar yang dihitung dari matriks persegi'],
+          correctAnswer: 'Nilai skalar yang dihitung dari matriks persegi',
+          selectedAnswer: null,
+          difficulty: 'mudah'
+        },
+        {
+          question: 'Determinan dari matriks berikut adalah.',
+          matrix: [
+            [2, 1],
+            [4, 3]
+          ],
+          choices: ['0', '1', '2', '3'],
+          correctAnswer: '2',
+          selectedAnswer: null,
+          difficulty: 'sedang'
+        },
+        {
+          question: 'Jika determinan matriks A adalah 7 dan determinan matriks B adalah -2, maka determinan dari A^T.B adalah?',
+          choices: ['4', '14', '-7', '49'],
+          correctAnswer: '-7',
+          selectedAnswer: null,
+          difficulty: 'sedang'
+        },
+        {
+          question: 'Jika determinan matriks A adalah 4 dan determinan matriks invers A adalah 1/4, maka determinan matriks identitas yang setara dengan A adalah?',
+          choices: ['1/4', '4', '1', '16'],
+          correctAnswer: '4',
+          selectedAnswer: null,
+          difficulty: 'sedang'
+        },
+        {
+          question: 'Hitung determinan matriks berikut.',
+          matrix:[
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+          ],
+          choices: ['0', '1', '3', '6'],
+          correctAnswer: '0',
+          selectedAnswer: null,
+          difficulty: 'sedang'
+        },
+        {
+          question: 'Hitung determinan matriks berikut.',
+          matrix: [
+            [2, 0, 1],
+            [0, 2, 0],
+            [1, 0, 2]
+          ],
+          choices: ['2', '4', '8','16'],
+          correctAnswer: '4',
+          selectedAnswer: null,
+          difficulty: 'sedang'
+        },
+        {
+          question: 'Hitung determinan matriks berikut.',
+          matrix: [
+            [1,  3,  1,  2],
+            [2,  1,  3,  1],
+            [3,  2,  1,  3],
+            [1,  3,  2,  1]
+          ],
+          choices: ['-16', '16', '32', '0'],
+          correctAnswer: '0',
+          selectedAnswer: null,
+          difficulty: 'sulit'
+        },
+        {
+          question: 'Hitung determinan matriks berikut.',
+          matrix : [
+            [-1,   2,  3, -4],
+            [ 4,  -5, -6,  7],
+            [ 7,  -8, -9,  0],
+            [-5,  10,  6, -1]
+          ],
+          choices: ['250', '270', '170', '150'],
+          correctAnswer: '270',
+          selectedAnswer: null,
+          difficulty: 'sulit'
+        },
+        {
+          question: 'Jika determinan dari matriks ortogonal adalah 1, maka matriks tersebut...',
+          choices: ['Tidak dapat dibalik', 'Simetris', 'Dapat dibalik'],
+          correctAnswer: 'Dapat dibalik',
+          selectedAnswer: null,
+          difficulty: 'sulit'
+        },
+        {
+          question: 'Jika matriks A adalah matriks 3x3 dengan semua elemen pada baris pertama adalah nol, apa yang bisa dikatakan tentang invers matriks A?',
+          choices: ['Matriks A tidak memiliki invers', ' Invers dari matriks A adalah nol', 'Invers dari matriks A juga memiliki baris pertama nol'],
+          correctAnswer: 'Matriks A tidak memiliki invers',
+          selectedAnswer: null,
+          difficulty: 'sulit'
+        },
+        {
+          question: 'Jika determinan dari matriks A adalah 3 dan determinan dari invers matriks A adalah X, berapakah nilai X?',
+          choices: ['1', '1/3', '3', '-3'],
+          correctAnswer: '1/3',
+          selectedAnswer: null,
+          difficulty: 'sulit'
+        }
+      ];
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+
+      const shuffledQuestions = shuffleArray(questions);
+
+      const quizContainer = document.getElementById('quiz');
+      const resultContainer = document.getElementById('result');
+      const submitButton = document.getElementById('submitButton');
+      const timerElement = document.getElementById('timer');
+
+      let currentQuestion = 0;
+      let score = 0;
+      let timeLeft = 900;
+      let timerInterval;
+      let quizFinished = false;
+      let cardFlipped = false; 
+      let openedCards = [];
+      let timeExpired = false;
+      let finishClicked = false;
+
+      function renderQuestion(timeExpired = false) {
+        quizContainer.innerHTML = '';
+        const questionData = shuffledQuestions[currentQuestion];
+        const questionElement = document.createElement('div');
+        questionElement.classList.add('card');
+        questionElement.setAttribute('data-difficulty', questionData.difficulty);
+        
+        let difficultyText = '';
+        switch (questionData.difficulty) {
+          case 'mudah':
+            difficultyText = 'Mudah';
+            break;
+          case 'sedang':
+            difficultyText = 'Sedang';
+            break;
+          case 'sulit':
+            difficultyText = 'Sulit';
+            break;
+          default:
+            difficultyText = '';
+        }
+        questionElement.innerHTML = `
+          <p>${currentQuestion + 1}. ${questionData.question}</p>
+          ${questionData.matrix ? `
+            <table class="matrix-table">
+              ${questionData.matrix.map(row => `
+                <tr>
+                  ${row.map(cell => `<td>${cell}</td>`).join('')}
+                </tr>
+              `).join('')}
+            </table>
+          ` : ''}
+          <ul class="choices">
+            ${questionData.choices.map((choice, i) => `
+              <li class="choice">
+                <button id="choice${currentQuestion}_${i}" class="answer-button ${questionData.selectedAnswer === choice ? 'selected' : ''}" onclick="selectAnswer('choice${currentQuestion}_${i}')">${String.fromCharCode(65 + i)}. ${choice}</button>
+              </li>
+            `).join('')}
+          </ul>
+          <div class="difficulty">${difficultyText}</div>
+        `;
+        quizContainer.appendChild(questionElement);
+
+        const buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('button-container');
+
+        const backButton = document.createElement('button');
+        backButton.textContent = 'Sebelumnya';
+        backButton.onclick = () => {
+          currentQuestion = Math.max(0, currentQuestion - 1);
+          renderQuestion();
+        };
+        buttonContainer.appendChild(backButton);
+
+        if (quizFinished && questionData.selectedAnswer !== null) {
+          const flipButton = document.createElement('button');
+          flipButton.textContent = 'Balik Kartu';
+          flipButton.onclick = flipCard;
+          buttonContainer.appendChild(flipButton);
+        }
+
+        const nextButton = document.createElement('button');
+        nextButton.textContent = currentQuestion === shuffledQuestions.length - 1 ? 'Selesai' : 'Selanjutnya'; // 4. Ubah logika tombol
+        nextButton.onclick = currentQuestion === shuffledQuestions.length - 1 ? finishQuiz : nextQuestion; // 4. Ubah logika tombol
+        buttonContainer.appendChild(nextButton);
+
+        quizContainer.appendChild(buttonContainer);
+
+        if (quizFinished) { // Menambahkan logika untuk menjaga warna tombol jawaban yang sudah dipilih
+          const selectedChoiceId = `choice${currentQuestion}_${questionData.choices.indexOf(questionData.selectedAnswer)}`;
+          const selectedChoice = document.getElementById(selectedChoiceId);
+          selectedChoice.classList.add('selected');
+          selectedChoice.style.backgroundColor = '#4c6daf';
+          selectedChoice.style.pointerEvents = 'none';
+        }
+      }
+
+      function selectAnswer(choiceId) {
+        if (!quizFinished) {
+          const selectedChoice = document.getElementById(choiceId);
+          const selectedAnswer = selectedChoice.textContent.slice(3);
+
+          const questionData = shuffledQuestions[currentQuestion];
+          const choices = selectedChoice.parentNode.parentNode.querySelectorAll('.answer-button');
+
+          choices.forEach(choice => {
+            choice.classList.remove('selected');
+            choice.style.backgroundColor = '#ff7f50';
+            choice.style.pointerEvents = 'auto';
+          });
+
+          shuffledQuestions[currentQuestion].selectedAnswer = selectedAnswer;
+          selectedChoice.classList.add('selected');
+          selectedChoice.style.backgroundColor = '#4c6daf';
+          selectedChoice.style.pointerEvents = 'none';
+        }
+      }
+
+      function nextQuestion() {
+        const selectedAnswer = shuffledQuestions[currentQuestion].selectedAnswer;
+        if (!selectedAnswer) {
+          alert("Pilih jawaban terlebih dahulu!");
+          return;
+        }
+
+        if (selectedAnswer === shuffledQuestions[currentQuestion].correctAnswer) {score++;}
+
+        currentQuestion++;
+        if (currentQuestion >= shuffledQuestions.length) {finishQuiz();}
+        else {renderQuestion();}
+      }
+
+      function prevQuestion() {
+        if (currentQuestion > 0) {
+          const selectedAnswer = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+          if (selectedAnswer) {
+            shuffledQuestions[currentQuestion].selectedAnswer = selectedAnswer.value;
+          }
+          currentQuestion--;
+          renderQuestion();
+        }
+      }
+
+      function finishQuiz() {
+        if (finishClicked) {
+          window.location.href = window.location.href.split('#')[0]; // Redirect ke halaman mulai
+          return;
+        }
+
+        clearInterval(timerInterval);
+
+        if (!quizFinished) {
+          const selectedAnswer = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+          if (selectedAnswer) {
+            shuffledQuestions[currentQuestion].selectedAnswer = selectedAnswer.value;
+            if (selectedAnswer.value === shuffledQuestions[currentQuestion].correctAnswer) {
+              score++;
+            }
+          }
+
+          renderQuestion(true);
+          quizFinished = true;
+        }
+
+        const correctAnswers = shuffledQuestions.filter(question => question.selectedAnswer === question.correctAnswer).length;
+        score = correctAnswers;
+
+        const scoreElement = document.getElementById('score');
+        scoreElement.innerHTML = `Kamu benar ${score.toFixed()} soal dari 15 soal`;
+        scoreElement.style.display = 'block';
+
+        renderQuestion(true); // Set timeExpired to true
+
+        showBackButton();
+
+        finishClicked = true;
+      }
+
+      function flipCard() {
+        const answerContainer = document.getElementById('answer');
+        const questionContainer = document.getElementById('quiz');
+        const questionData = shuffledQuestions[currentQuestion];
+
+        if (!openedCards.includes(currentQuestion)) {
+          openedCards.push(currentQuestion);
+          answerContainer.style.display = 'block';
+          questionContainer.style.display = 'none';
+
+          const answerElement = document.createElement('div');
+          answerElement.classList.add('card');
+          answerElement.setAttribute('data-difficulty', questionData.difficulty);
+          let difficultyText = '';
+          switch (questionData.difficulty) {
+            case 'mudah':
+              difficultyText = 'Mudah';
+              break;
+            case 'sedang':
+              difficultyText = 'Sedang';
+              break;
+            case 'sulit':
+              difficultyText = 'Sulit';
+              break;
+            default:
+              difficultyText = '';
+          }
+          answerElement.innerHTML = `
+            <div class="question">${currentQuestion + 1}. ${questionData.question}</div>
+            ${questionData.matrix ? `
+              <table class="matrix-table">
+                ${questionData.matrix.map(row => `
+                  <tr>
+                    ${row.map(cell => `<td>${cell}</td>`).join('')}
+                  </tr>
+                `).join('')}
+              </table>
+            ` : ''}
+            <div class="difficulty">${difficultyText}</div>
+            <div class="answer ${questionData.selectedAnswer === questionData.correctAnswer ? 'correct-answer' : 'wrong-answer'}">
+              Jawaban yang benar adalah: ${questionData.correctAnswer}
+            </div>
+            <div class="answer ${questionData.selectedAnswer === questionData.correctAnswer ? 'correct-answer' : 'wrong-answer'}">
+              ${questionData.selectedAnswer === questionData.correctAnswer ? 'Jawaban kamu benar!' : 'Jawaban kamu salah.'}
+            </div>
+          `;
+          answerContainer.appendChild(answerElement);
+
+          const backButton = document.createElement('button');
+          backButton.textContent = 'Balik Kartu';
+          backButton.classList.add('center-button');
+          backButton.onclick = () => {
+            answerContainer.style.display = 'none';
+            questionContainer.style.display = 'block';
+            openedCards = openedCards.filter(card => card !== currentQuestion);
+            answerContainer.innerHTML = '';
+          };
+          answerContainer.appendChild(backButton);
+        } else {
+          openedCards = openedCards.filter(card => card !== currentQuestion);
+          answerContainer.style.display = 'none';
+          questionContainer.style.display = 'block';
+          answerContainer.innerHTML = '';
+        }
+      }
+
+      function showBackButton() {
+        const buttonContainer = document.querySelector('.button-container');
+        if (!buttonContainer.querySelector('button')) {
+          const backButton = document.createElement('button');
+          backButton.textContent = 'Kembali';
+          backButton.onclick = () => {
+            currentQuestion = Math.max(0, currentQuestion - 1);
+            renderQuestion();
+          };
+          buttonContainer.insertBefore(backButton, buttonContainer.firstChild);
+        }
+      }
+
+      function startQuiz() {
+        quizContainer.style.display = 'block';
+        renderQuestion();
+        startTimer();
+      }
+
+      const startCard = document.createElement('div');
+      startCard.classList.add('start-card');
+      startCard.innerHTML = `
+        <h2>DETERMINAN MATRIKS</h2>
+        <p>Ayo tes pengetahuanmu tentang Determinan Matriks!!</p>
+        <p>Setiap soal memiliki level kesulitan yang berbeda-beda.</p>
+        <button id="startButton">Mulai</button>
+      `;
+      document.body.appendChild(startCard);
+
+      const startButton = document.getElementById('startButton');
+      startButton.addEventListener('click', function () {
+        startCard.style.display = 'none'; // Sembunyikan card mulai
+        startQuiz(); // Panggil fungsi untuk memulai quiz
+      });
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+          const seconds = (timeLeft % 60).toString().padStart(2, '0');
+          timerElement.textContent = `Waktu ${minutes}:${seconds}`;
+          if (timeLeft === 0) {
+            timerElement.textContent = 'Waktu Sudah Habis';
+            clearInterval(timerInterval);
+            finishQuiz();
+            alert('Waktu Sudah Habis!');
+          }
+        }, 1000);
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.11.3",
+    "caniuse-lite": "^1.0.30001620",
+    "mathjs": "^12.4.2"
+  }
+}
