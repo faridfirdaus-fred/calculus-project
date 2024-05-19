@@ -1,6 +1,3 @@
-// Define calculations array to store history
-let calculations = [];
-
 // Function to toggle sidebar
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
@@ -8,14 +5,16 @@ function toggleSidebar() {
   sidebar.classList.toggle("translate-x-0");
 }
 
+// Define calculations array
+const calculations = [];
+
 // Function to render history
 function renderHistory() {
   const historyList = document.getElementById("historyList");
   historyList.innerHTML = "";
 
-  // Loop through calculations array and render history
-  calculations.forEach(function (calculation) {
-    let listItem = document.createElement("li");
+  calculations.forEach((calculation) => {
+    const listItem = document.createElement("li");
     listItem.textContent = calculation.expression;
     listItem.classList.add(
       "cursor-pointer",
@@ -26,120 +25,166 @@ function renderHistory() {
     );
     historyList.appendChild(listItem);
 
-    // Add click event listener to each history item
-    listItem.addEventListener("click", function () {
-      let value = this.textContent;
+    listItem.addEventListener("click", () => {
+      const value = listItem.textContent;
       document.getElementById("expression").value = value;
     });
   });
 }
 
-// Function to calculate complex expression
+// Function to evaluate complex expression
 function evaluateComplexExpression(expression) {
-  // Evaluate expression using math.js
   const result = math.evaluate(expression);
 
-  // Check if the result is a complex number
   if (result.im !== undefined) {
-    // Format the complex number
     const formattedResult = `${formatNumber(result.re)} ${
       result.im >= 0 ? "+" : "-"
     } ${Math.abs(formatNumber(result.im))}i`;
     return {
       result: formattedResult,
-      expression: expression, // Return expression along with result
+      expression,
     };
   }
 
-  // For non-complex numbers, format normally
   return {
     result: formatNumber(result),
-    expression: expression, // Return expression along with result
+    expression,
   };
 }
 
 // Function to format numbers
 function formatNumber(number) {
-  // Format the number with 2 decimal places
-  let formattedNumber = math.format(number, {
+  const formattedNumber = math.format(number, {
     notation: "fixed",
     precision: 2,
   });
 
-  // Check if the number is an integer
   if (Number.isInteger(parseFloat(number))) {
-    // Remove .00 from the formatted string
-    formattedNumber = formattedNumber.split(".")[0];
+    return formattedNumber.split(".")[0];
   }
 
   return formattedNumber;
 }
 
-// Add event listener to the calculate button
-document.getElementById("calculate").addEventListener("click", function () {
+// Function to calculate expression
+function calculateExpression() {
   const expression = document.getElementById("expression").value;
   try {
     const result = evaluateComplexExpression(expression);
-    document.getElementById("result").innerText = `Hasil: ${result.result}`;
+    document.getElementById("result").textContent = `Hasil: ${result.result}`;
 
-    // Add the calculation to history
     calculations.push(result);
-    renderHistory(); // Update the history display
+    renderHistory();
   } catch (error) {
-    document.getElementById("result").innerText = `Error: ${error.message}`;
+    document.getElementById("result").textContent = `Error: ${error.message}`;
+  }
+}
+
+// Function to reset input field
+function resetInputField() {
+  document.getElementById("expression").value = "";
+}
+
+// Function to handle form submission
+function handleFormSubmission(event) {
+  event.preventDefault();
+  const input = document.getElementById("complexInput").value;
+  try {
+    const result = calculateComplexOperation(input);
+    document.getElementById(
+      "result"
+    ).textContent = `Hasil: ${result.resultReal} + ${result.resultImaginary}i`;
+  } catch (error) {
+    document.getElementById("result").textContent = "Format input tidak valid";
+  }
+}
+
+// Function to initialize the page
+function initializePage() {
+  const calculateButton = document.getElementById("calculate");
+  const resetButton = document.getElementById("reset");
+  const expressionInput = document.getElementById("expression");
+  const resultDiv = document.getElementById("result");
+  const stepsDiv = document.getElementById("steps");
+  const historyList = document.getElementById("historyList");
+
+  const resetCalculator = () => {
+    expressionInput.value = "";
+    resultDiv.innerHTML = "";
+    stepsDiv.innerHTML = "";
+  };
+
+  const showResult = (expression, result, steps) => {
+    resultDiv.innerHTML = `<strong>Hasil:</strong> ${result}`;
+    stepsDiv.innerHTML = `<strong>Cara Pengerjaan:</strong><br>${steps.join(
+      "<br>"
+    )}`;
+
+    const historyItem = document.createElement("li");
+    historyItem.innerHTML = `<strong>Ekspresi:</strong> ${expression} = <strong>${result}</strong>`;
+    historyList.appendChild(historyItem);
+  };
+
+  const calculateExpression = () => {
+    const expression = expressionInput.value;
+    try {
+      const node = math.parse(expression);
+      const compiled = node.compile();
+      const result = compiled.evaluate();
+
+      const steps = [
+        `Input ekspresi: ${expression}`,
+        `Parsing ekspresi`,
+        `Evaluasi hasil: ${result}`,
+      ];
+
+      showResult(expression, result, steps);
+    } catch (error) {
+      resultDiv.innerHTML = `<span class="text-red-500">Error: ${error.message}</span>`;
+    }
+  };
+
+  calculateButton.addEventListener("click", calculateExpression);
+  resetButton.addEventListener("click", resetCalculator);
+}
+
+// Function to toggle info popup
+function toggleInfoPopup() {
+  const infoPopup = document.getElementById("infoPopup");
+  infoPopup.classList.toggle("hidden");
+}
+
+// Function to close info popup when clicking outside
+function closeInfoPopup(event) {
+  const infoPopup = document.getElementById("infoPopup");
+  const infoButton = document.getElementById("infoButton");
+
+  if (!infoPopup.contains(event.target) && event.target !== infoButton) {
+    infoPopup.classList.add("hidden");
+  }
+}
+
+// Call necessary functions on DOMContentLoaded event
+document.addEventListener("DOMContentLoaded", () => {
+  renderHistory();
+  initializePage();
+
+  const infoButton = document.getElementById("infoButton");
+  infoButton.addEventListener("click", toggleInfoPopup);
+
+  document.addEventListener("click", closeInfoPopup);
+});
+
+// Add event listener to the input field to listen for 'Enter' key press
+document.getElementById("expression").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    document.getElementById("calculate").click();
   }
 });
 
-// Function to reset input field
-document.getElementById("reset").addEventListener("click", function () {
-  document.getElementById("expression").value = "";
-});
-
-// Call renderHistory initially to render any existing history
-renderHistory();
-
-// Add event listener to the input field to listen for 'Enter' key press
-document
-  .getElementById("expression")
-  .addEventListener("keypress", function (e) {
-    // Check if the key pressed is 'Enter' (key code 13)
-    if (e.key === "Enter") {
-      // Prevent the default action (form submission)
-      e.preventDefault();
-
-      // Trigger the click event on the 'Hitung' button
-      document.getElementById("calculate").click();
-    }
-  });
-function calculateComplexOperation(operationString) {
-  const parts = operationString.split(/(?=[+-])/);
-  let resultReal = 0;
-  let resultImaginary = 0;
-
-  parts.forEach((part) => {
-    const complexNumber = parseComplexNumber(part);
-    if (complexNumber) {
-      resultReal += complexNumber.realPart;
-      resultImaginary += complexNumber.imaginaryPart;
-    }
-  });
-
-  return { resultReal, resultImaginary };
-}
-
-document
-  .getElementById("complexCalcForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const input = document.getElementById("complexInput").value;
-
-    try {
-      const result = calculateComplexOperation(input);
-      document.getElementById(
-        "result"
-      ).innerHTML = `Hasil: ${result.resultReal} + ${result.resultImaginary}i`;
-    } catch (error) {
-      document.getElementById("result").innerHTML = "Format input tidak valid";
-    }
-  });
+// Add event listener to the form submission
+document.getElementById("complexCalcForm").addEventListener(
+  "submit",
+  handleFormSubmission
+);

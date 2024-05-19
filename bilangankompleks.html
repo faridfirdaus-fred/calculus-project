@@ -1,88 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Complex Number Calculator</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link href="./output.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .transition-all {
-      transition: all 0.3s;
-    }
-  </style>
-</head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
-  <!-- Sidebar Start -->
-  <span class="absolute text-4xl text-white cursor-pointer top-5 left-4" onclick="toggleSidebar()">
-    <i class="px-2 bg-gray-900 rounded-md bi bi-filter-left"></i>
-  </span>
-  <nav id="sidebar"
-    class="w-[300px] left-[-300px] p-2 fixed bottom-0 top-0 overflow-y-auto text-center bg-primary lg:left-0 font-roboto transition-all duration-300">
-    <div class="text-xl text-white">
-      <div class="p-2.5 mt-1 flex item-center">
-        <div class="flex px-2 py-1 bg-blue-600 rounded-md">
-          <img class="w-10" src="img/7.png" alt="" />
-          <h1 class="text-white uppercase">Calcumat</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complex Number Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .transition-all {
+        transition: all 0.3s;
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen bg-gray-200">
+    <!-- Sidebar Start -->
+    <span
+      class="absolute text-4xl text-white cursor-pointer top-5 left-4"
+      onclick="toggleSidebar()"
+    >
+      <i class="px-2 bg-gray-900 rounded-md bi bi-filter-left"></i>
+    </span>
+    <nav
+      id="sidebar"
+      class="w-[300px] left-[-300px] p-2 fixed bottom-0 top-0 overflow-y-auto text-center bg-primary lg:left-0 font-roboto"
+    >
+      <div class="text-xl text-white">
+        <div class="p-2.5 mt-1 flex item-center">
+          <div class="flex px-2 py-1 rounded-md bg2-blue-600">
+            <img class="w-10" src="img/7.png" alt="" />
+            <h1 class="text-white uppercase">Calcumat</h1>
+          </div>
+          <i
+            id="tutup"
+            class="ml-20 cursor-pointer bi bi-x lg:hidden"
+            onclick="toggleSidebar()"
+          ></i>
         </div>
-        <i id="tutup" class="ml-20 cursor-pointer bi bi-x lg:hidden" onclick="toggleSidebar()"></i>
+        <hr class="my-2 text-white" />
+      </div>
+      <div
+        class="sidebar-list"
+        onclick="window.location.href='index.html'"
+      >
+        <div class="bi bi-house-door-fill"></div>
+        <span class="uppercase text-[15px] ml-4">beranda</span>
+      </div>
+      <div
+        class="sidebar-list"
+        onclick="window.location.href='kalkulator.html'"
+      >
+        <div class="bi bi-calculator">
+          <span class="uppercase text-[15px] ml-4">kalkulator determinan</span>
+        </div>
+      </div>
+      <div class="sidebar-list bg-slate-400">
+        <div
+          class="bi bi-calculator"
+          onclick="window.location.href='bilangankompleks.html'"
+        >
+          <span class="uppercase text-[14px] ml-4"
+            >kalkulator bil. kompleks</span
+          >
+        </div>
       </div>
       <hr class="my-2 text-white" />
-    </div>
-    <div class="sidebar-list"
-      onclick="window.location.href='index.html#beranda';">
-      <div class="bi bi-house-door-fill"></div>
-      <span class="uppercase text-[15px] ml-4">beranda</span>
-    </div>
-    <div class="sidebar-list"
-      onclick="window.location.href='kalkulator.html#kalkulator-determinan';">
-      <div class="bi bi-calculator">
-        <span class="uppercase text-[15px] ml-4">kalkulator determinan</span>
+      <div
+        class="sidebar-list"
+        onclick="window.location.href='materi.html'"
+      >
+        <div class="bi bi-book-fill">
+          <span class="uppercase text-[15px] ml-4">Materi</span>
+        </div>
       </div>
-    </div>
-    <div class="sidebar-list bg-slate-400">
-      <div class="bi bi-calculator" onclick="window.location.href='bilangankompleks.html#bilangan-kompleks';">
-        <span class=" uppercase text-[14px] ml-4">kalkulator bil. kompleks</span>
+      <div
+        class="sidebar-list"
+        onclick="window.location.href='kontak.html'"
+      >
+        <div class="bi bi-person-lines-fill">
+          <span class="uppercase text-[15px] ml-4">kontak</span>
+        </div>
       </div>
-    </div>
-    <hr class="my-2 text-white" />
-    <div class="sidebar-list">
-      <div class="bi bi-book-fill" onclick="window.location.href='materi.html#materi';">
-        <span class="uppercase text-[15px] ml-4">Materi</span>
+      <div
+        class="sidebar-list"
+        onclick="window.location.href='about_page.html'"
+      >
+        <div class="bi bi-info-lg">
+          <span class="uppercase text-[15px] ml-4">tentang kami</span>
+        </div>
       </div>
-    </div>
-    <div class="sidebar-list">
-      <div class="bi bi-person-lines-fill" onclick="window.location.href='kontak.html#kontak';">
-        <span class="uppercase text-[15px] ml-4">kontak</span>
-      </div>
-    </div>
-    <div class="sidebar-list">
-      <div class="bi bi-info-lg" onclick="window.location.href='about_page.html#tentang-kami';">
-        <span class="uppercase text-[15px] ml-4">tentang kami</span>
-      </div>
-    </div>
-  </nav>
-  <!-- Sidebar End -->
+    </nav>
+    <!-- Sidebar End -->
+      <!-- Tombol Info Cara Penggunaan -->
+  <button id="infoButton" class="absolute top-5 right-5 text-blacks rounded-lg bi bi-info-circle-fill" style="font-size: 1.5rem;"></button>
 
-  <div class="flex items-center justify-center flex-1 p-4 transition-all" id="bilangan-kompleks">
-    <div class="w-full max-w-md p-6 bg-white border rounded-lg shadow-lg">
-      <div class="h-full overflow-auto">
-        <div class="flex mb-4">
-          <input type="text" id="expression" class="flex-grow p-2 border rounded" placeholder="Masukkan ekspresi kompleks">
-          <button id="reset" class="p-2 ml-2 bg-gray-300 rounded-full"><img src="img/refresh-cw-alt-3-svgrepo-com.svg" alt="refresh" class="w-6"></button>
-        </div>
-        <button id="calculate" class="w-full p-2 text-white bg-blue-500 rounded">Hitung</button>
-        <div id="result" class="mt-4"></div>
-        <div id="history" class="mt-4 overflow-auto max-h-48">
-          <ul id="historyList"></ul>
-        </div>
+  <!-- Pop Up Info Cara Penggunaan -->
+  <div id="infoPopup" class="absolute top-12 right-5 bg-gray-800 text-white p-4 rounded-lg shadow-lg hidden z-10">
+    <h2 class="text-lg font-bold mb-2">Cara Penggunaan</h2>
+    <ul class="list-disc pl-5">
+      <li>Masukkan ekspresi bilangan kompleks pada kotak input.</li>
+      <li>Gunakan dengan format (x - yi) i sebagai imajiner/imaginary number</li>
+      <li>Klik tombol "Hitung" untuk mendapatkan hasil.</li>
+      <li>Klik tombol reset untuk menghapus input dan hasil.</li>
+      <li>Klik history untuk mengembalikan form.</li>
+    </ul>
+  </div>
+
+  <!-- El Kalkulator  -->
+
+    <div class="flex items-center justify-center flex-1 p-4 transition-all" id="bilangan-kompleks">
+  <div class="w-full max-w-md px-10 py-8 bg-slate-300 rounded-2xl shadow-2xl">
+    <h1 class="text-center mb-6 text-xl font-bold">Kalkulator Bilangan Kompleks</h1>
+    <div class="h-full overflow-auto">
+      <div class="flex mb-4">
+        <input
+          type="text"
+          id="expression"
+          class="flex-grow p-2 border-black border rounded"
+          placeholder="Masukkan ekspresi kompleks"
+        />
+        <button id="reset" class="p-2 ml-2 rounded-full">
+          <img
+            src="img/refresh-cw-alt-3-svgrepo-com.svg"
+            alt="refresh"
+            class="w-6 hover:rotate-90 transition-all duration-200"
+          />
+        </button>
+      </div>
+      <button
+        id="calculate"
+        class="w-full p-2 text-white bg-blue-500 hover:bg-primary rounded"
+      >
+        Hitung
+      </button>
+      <div id="result" class="mt-4"></div>
+      <div id="steps" class="mt-4"></div> <!-- Elemen untuk menampilkan langkah-langkah -->
+      <div id="history" class="mt-4 overflow-auto max-h-48">
+        <ul id="historyList"></ul>
       </div>
     </div>
   </div>
+</div>
 
-  <script src="bilKompleks.js"></script>
-</body>
+  
+    <script src="bilKompleks.js"></script>
+  </body>
 </html>

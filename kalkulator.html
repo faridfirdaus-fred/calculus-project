@@ -9,7 +9,6 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
 
 </head>
@@ -32,30 +31,30 @@
       <hr class="my-2 text-white" />
     </div>
     <div class="sidebar-list"
-      onclick="window.location.href='index.html#beranda';">
+      onclick="window.location.href='index.html'">
       <div class="bi bi-house-door-fill"></div>
       <span class="uppercase text-[15px] ml-4">beranda</span>
       </a>
     </div>
     <div class="sidebar-list bg-slate-400"
-      onclick="window.location.href='kalkulator.html#kalkulator-determinan';">
+      onclick="window.location.href='kalkulator.html'">
       <div class="bi bi-calculator">
         <span class="uppercase text-[15px] ml-4">kalkulator determinan</span>
       </div>
     </div>
     <div class="sidebar-list">
-      <div class="bi bi-calculator" onclick="window.location.href='bilangankompleks.html#bilangan-kompleks';">
+      <div class="bi bi-calculator" onclick="window.location.href='bilangankompleks.html'">
         <span class=" uppercase text-[14px] ml-4">kalkulator bil. kompleks</span>
       </div>
     </div>
     <hr class="my-2 text-white" />
-    <div class="sidebar-list" onclick="window.location.href='materi.html#materi';">
+    <div class="sidebar-list" onclick="window.location.href='materi.html'">
       <div class="bi bi-book-fill">
         <span class="uppercase text-[15px] ml-4">Materi</span>
       </div>
     </div>
     <div class="sidebar-list">
-      <div class="bi bi-person-lines-fill" onclick="window.location.href='kontak.html#kontak';">
+      <div class="bi bi-person-lines-fill" onclick="window.location.href='kontak.html'">
         <span class="uppercase text-[15px] ml-4">kontak</span>
       </div>
     </div>
@@ -66,18 +65,36 @@
     </div>
   </nav>
   <!-- Sidebar End -->
-  <div class="flex justify-center mt-4">
-    <select id="selectOrder" class="px-4 py-2 mr-4 text-white bg-blue-600 rounded hover:bg-gradient">
+<!-- ingfo  -->
+     <!-- Tombol Info Cara Penggunaan -->
+  <button id="infoButton" class="absolute top-5 right-5 text-blacks rounded-lg bi bi-info-circle-fill" style="font-size: 1.5rem;"></button>
+
+  <!-- Pop Up Info Cara Penggunaan -->
+  <div id="infoPopup" class="absolute top-12 right-5 bg-gray-800 text-white p-4 rounded-lg shadow-lg hidden z-10">
+    <h2 class="text-lg font-bold mb-2">Cara Penggunaan</h2>
+    <ul class="list-disc pl-5">
+      <li>Pilih Determinan ordo 2x2 atau ordo 3x3</li>
+      <li>Masukkan angka pada form</li>
+      <li>Gunakan arah pada keyboard untuk memilih kolom form</li>
+      <li>Klik tombol reset untuk menghapus input dan hasil.</li>
+      <li>Klik history untuk mengembalikan form.</li>
+    </ul>
+  </div>
+
+  <!-- dropdown  -->
+  <div class="flex justify-center mt-16">
+    <select id="selectOrder" class="shadow-2xl w-[200px] px-4 py-2 mr-4 text-black rounded-lg bg-white hover:bg-slate-600 hover:text-white focus:outline-none ">
       <option value="2x2">Ordo 2x2</option>
       <option value="3x3">Ordo 3x3</option>
     </select>
   </div>
   <!-- Kalkulator Determinan Start  -->
   <section id="kalkulator-determinan"
-    class="flex items-center justify-center pt-24 pb-16 mx-auto bg-gray-200 lg:w-4/5">
+    class="flex items-center justify-center pb-16 mx-auto bg-gray-200">
     <div class="w-full mx-auto">
       <div class="flex flex-wrap">
         <!-- DETERMINAN ORDO 3  X3 START  -->
+
         <div id="matrix3x3"
           class="w-full max-w-md p-6 mx-auto overflow-y-auto shadow-2xl bg-slate-300 rounded-3xl lg:w-2/5"
           style="display: none;">
@@ -98,11 +115,11 @@
             </div>
             <div class="flex items-center justify-between mt-4">
               <button type="submit"
-                class="px-4 py-2 text-white transition duration-500 ease-in-out bg-blue-600 rounded hover:bg-gradient">
+                class="px-4 py-2 text-white transition duration-500 ease-in-out bg-blue-600 rounded hover:bg-primary">
                 Hitung Determinan
               </button>
               <button type="button" id="clearInputs"
-                class="w-10 px-2 py-2 transition duration-500 bg-white border-black rounded-full hover:bg-gradient">
+                class="w-10 px-2 py-2 transition duration-500  border-black rounded-full hover:rotate-90">
 
                 <img src="img/refresh-cw-alt-3-svgrepo-com.svg" alt="" />
               </button>
@@ -132,12 +149,12 @@
             </div>
             <div class="flex items-center justify-between mt-4">
               <button type="button" id="hitungDeterminan_2x2"
-                class="px-4 py-2 text-white transition duration-200 bg-blue-600 rounded-lg hover:bg-gradient">
+                class="px-4 py-2 text-white transition duration-200 bg-blue-600 rounded-lg hover:bg-primary">
                 Hitung Determinan
               </button>
               <!-- Changed ID -->
               <button type="button" id="clearInputs_2x2"
-                class="w-10 px-2 py-2 text-gray-700 transition duration-200 bg-white rounded-full hover:bg-gradient">
+                class="w-10 px-2 py-2 text-gray-700 transition duration-200  rounded-full hover:rotate-90">
                 <img src="img/refresh-cw-alt-3-svgrepo-com.svg" alt="" />
               </button>
               <!-- Changed ID -->
@@ -154,6 +171,7 @@
         </div>
         <!-- DETERMINAN ORDO 2X2 END  -->
       </div>
+    </div>
     </div>
   </section>
   <script src="determinan.js"></script>

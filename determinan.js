@@ -1,3 +1,4 @@
+
 // Fungsi untuk menampilkan kalkulator 3x3 dan menyembunyikan kalkulator 2x2
 function showCalculator3x3() {
   document.getElementById("kalkulator_2x2").style.display = "none";
@@ -251,3 +252,24 @@ document.querySelectorAll("#matrixForm_2x2 input").forEach(function (input) {
      document.getElementById("matrix2x2").style.display = "block";
    }
  });
+
+// Function to toggle info popup
+function toggleInfoPopup() {
+  const infoPopup = document.getElementById("infoPopup");
+  infoPopup.classList.toggle("hidden");
+}
+
+// Function to close info popup when clicking outside
+function closeInfoPopup(event) {
+  const infoPopup = document.getElementById("infoPopup");
+  const infoButton = document.getElementById("infoButton");
+
+  if (!infoPopup.contains(event.target) && event.target !== infoButton) {
+    infoPopup.classList.add("hidden");
+  }
+}
+// Add event listener to toggle info popup
+document.getElementById("infoButton").addEventListener("click", toggleInfoPopup);
+
+// Add event listener to close info popup when clicking outside
+document.addEventListener("click", closeInfoPopup);
