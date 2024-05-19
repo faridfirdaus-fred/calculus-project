@@ -111,3 +111,35 @@ document
       document.getElementById("calculate").click();
     }
   });
+function calculateComplexOperation(operationString) {
+  const parts = operationString.split(/(?=[+-])/);
+  let resultReal = 0;
+  let resultImaginary = 0;
+
+  parts.forEach((part) => {
+    const complexNumber = parseComplexNumber(part);
+    if (complexNumber) {
+      resultReal += complexNumber.realPart;
+      resultImaginary += complexNumber.imaginaryPart;
+    }
+  });
+
+  return { resultReal, resultImaginary };
+}
+
+document
+  .getElementById("complexCalcForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const input = document.getElementById("complexInput").value;
+
+    try {
+      const result = calculateComplexOperation(input);
+      document.getElementById(
+        "result"
+      ).innerHTML = `Hasil: ${result.resultReal} + ${result.resultImaginary}i`;
+    } catch (error) {
+      document.getElementById("result").innerHTML = "Format input tidak valid";
+    }
+  });
