@@ -69,7 +69,7 @@ document
     document.getElementById(
       "explanation"
     ).innerHTML = `<p><strong>Cara Mengerjakan:</strong> Untuk menghitung determinan matriks 3x3, gunakan rumus berikut:</p> +
-          <p>det(A) = a11 * (a22 * a33 - a23 * a32) - a12 * (a21 * a33 - a23 * a31) + a13 * (a21 * a32 - a22 * a31)</p>`;
+          <p>det(A) = ((a11 x a22 x 133) + (a12 x a23 x a31) + (a13 x a21 x a32) - (a31 x a22 x a13) + (a32 x a23 x a11) - (a33 x a21 x a12))</p>`;
     // Tambahkan perhitungan ke riwayat
     let historyItem = matrixValues.join(", ") + " = " + determinant;
     calculations.push(historyItem);
@@ -149,7 +149,7 @@ document
     // Penjelasan
     document.getElementById("explanation_2x2").innerHTML =
       "<p><strong>Cara Mengerjakan:</strong> Untuk menghitung determinan matriks 2x2, gunakan rumus berikut:</p>" +
-      "<p>det(A) = (a11 * a22) - (a12 * a21)</p>";
+      "<p>det(A) = (a11 x a22) - (a12 x a21)</p>";
 
     // Tambahkan ke riwayat
     let historyItem = [a11, a12, a21, a22].join(", ") + " = " + determinant;
