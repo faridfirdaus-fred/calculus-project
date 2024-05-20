@@ -34,57 +34,60 @@ function checkParent(t, elm) {
   return false;
 }
 
- let scrollpos = window.scrollY;
- let header = document.getElementById("header");
- let navcontent = document.getElementById("nav-content");
- let navaction = document.getElementById("navAction");
- let brandname = document.getElementById("brandname");
- let toToggle = document.querySelectorAll(".toggleColour");
- let navlist = document.querySelectorAll('.navlist')
+let scrollpos = window.scrollY;
+let header = document.getElementById("header");
+let navcontent = document.getElementById("nav-content");
+let navaction = document.getElementById("navAction");
+let brandname = document.getElementById("brandname");
+let toToggle = document.querySelectorAll(".toggleColour");
+let navlist = document.querySelectorAll('.navlist')
 
- document.addEventListener("scroll", function () {
-   /*Apply classes for slide in bar*/
-   scrollpos = window.scrollY;
+document.addEventListener("scroll", function () {
+  /*Apply classes for slide in bar*/
+  scrollpos = window.scrollY;
 
-   if (scrollpos > 10) {
-     header.classList.add("bg-white");
-     navaction.classList.remove("bg-white");
-     navaction.classList.add("bg-primary");
-     navaction.classList.remove("text-gray-800");
-     navaction.classList.add("text-white");
-     navlist.forEach(function (element) {
-       element.classList.remove("lg:text-white");
-     });
-    
-     //Use to switch toggleColour colours
-     for (let i = 0; i < toToggle.length; i++) {
-       toToggle[i].classList.add("text-gray-800");
-       toToggle[i].classList.remove("text-white");
-     }
-     header.classList.add("shadow");
-     navcontent.classList.remove("bg-gray-100");
-     navcontent.classList.add("bg-white");
-   } else {
-     header.classList.remove("bg-white");
-     navaction.classList.remove("bg-primary");
-     navaction.classList.add("bg-white");
-     navaction.classList.remove("text-white");
-      navlist.forEach(function (element) {
-        element.classList.add("lg:text-white");
-      });
+  if (scrollpos > 10) {
+    header.classList.add("bg-white");
+    navaction.classList.remove("bg-white");
+    navaction.classList.add("bg-primary");
+    navaction.classList.remove("text-gray-800");
+    navaction.classList.add("text-white");
+    navMenu.classList.add('text-black')
+    navlist.forEach(function (element) {
+      element.classList.remove("lg:text-white");
+    });
 
-     navaction.classList.add("text-gray-800");
-     //Use to switch toggleColour colours
-     for (let i = 0; i < toToggle.length; i++) {
-       toToggle[i].classList.add("text-white");
-       toToggle[i].classList.remove("text-gray-800");
-     }
+    //Use to switch toggleColour colours
+    for (let i = 0; i < toToggle.length; i++) {
+      toToggle[i].classList.add("text-gray-800");
+      toToggle[i].classList.remove("text-white");
+    }
+    header.classList.add("shadow");
+    navcontent.classList.remove("bg-gray-100");
+    navcontent.classList.add("bg-white");
+  } else {
+    header.classList.remove("bg-white");
+    navaction.classList.remove("bg-primary");
+    navaction.classList.add("bg-white");
+    navMenu.classList.remove("text-black");
 
-     header.classList.remove("shadow");
-     navcontent.classList.remove("bg-white");
-     navcontent.classList.add("bg-gray-100");
-   }
- });
+    navaction.classList.remove("text-white");
+    navlist.forEach(function (element) {
+      element.classList.add("lg:text-white");
+    });
+
+    navaction.classList.add("text-gray-800");
+    //Use to switch toggleColour colours
+    for (let i = 0; i < toToggle.length; i++) {
+      toToggle[i].classList.add("text-white");
+      toToggle[i].classList.remove("text-gray-800");
+    }
+
+    header.classList.remove("shadow");
+    navcontent.classList.remove("bg-white");
+    navcontent.classList.add("bg-gray-100");
+  }
+});
 // nav button
 document.getElementById("navAction").addEventListener("click", function () {
   window.location.href = "kalkulator.html";
@@ -112,7 +115,6 @@ function parseComplexNumber(complexString) {
   return null;
 }
 
-// Fungsi untuk menghitung operasi pada bilangan kompleks
 let image = document.getElementById("movingImage");
 let position = 0;
 let direction = 1;

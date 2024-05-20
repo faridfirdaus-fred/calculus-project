@@ -1,4 +1,3 @@
-
 // Fungsi untuk menampilkan kalkulator 3x3 dan menyembunyikan kalkulator 2x2
 function showCalculator3x3() {
   document.getElementById("kalkulator_2x2").style.display = "none";
@@ -46,11 +45,11 @@ let calculations_2x2 = [];
 let calculations = [];
 let historyList = document.getElementById("historyList");
 
-// Function to handle form submission
+// Fungsi untuk menangani pengiriman formulir
 document
   .getElementById("matrixForm")
   .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); // Mencegah pengiriman formulir
     let matrixValues = [];
     let inputs = document.querySelectorAll("#matrixForm input");
     inputs.forEach(function (input) {
@@ -71,13 +70,13 @@ document
       "explanation"
     ).innerHTML = `<p><strong>Cara Mengerjakan:</strong> Untuk menghitung determinan matriks 3x3, gunakan rumus berikut:</p> +
           <p>det(A) = a11 * (a22 * a33 - a23 * a32) - a12 * (a21 * a33 - a23 * a31) + a13 * (a21 * a32 - a22 * a31)</p>`;
-    // Add calculation to history
+    // Tambahkan perhitungan ke riwayat
     let historyItem = matrixValues.join(", ") + " = " + determinant;
     calculations.push(historyItem);
     renderHistory();
   });
 
-// Function to handle clearing form inputs
+// Fungsi untuk menghapus input formulir
 document.getElementById("clearInputs").addEventListener("click", function () {
   let inputs = document.querySelectorAll("#matrixForm input");
   inputs.forEach(function (input) {
@@ -85,7 +84,7 @@ document.getElementById("clearInputs").addEventListener("click", function () {
   });
 });
 
-// Function to calculate determinant
+// Fungsi untuk menghitung determinan
 function calculateDeterminant(matrix) {
   let a11 = matrix[0],
     a12 = matrix[1],
@@ -103,7 +102,7 @@ function calculateDeterminant(matrix) {
   );
 }
 
-// Function to render history
+// Fungsi untuk merender riwayat
 function renderHistory() {
   historyList.innerHTML = "";
   calculations.forEach(function (calculation) {
@@ -116,7 +115,7 @@ function renderHistory() {
       "rounded"
     );
     historyList.appendChild(listItem);
-    // Add click event listener to each history item
+    // Tambahkan event listener klik ke setiap item riwayat
     listItem.addEventListener("click", function () {
       let values = this.textContent.split("=")[0].split(",");
       document
@@ -147,12 +146,12 @@ document
     document.getElementById("result_2x2").innerText =
       "Determinan = " + determinant;
 
-    // Explanation
+    // Penjelasan
     document.getElementById("explanation_2x2").innerHTML =
       "<p><strong>Cara Mengerjakan:</strong> Untuk menghitung determinan matriks 2x2, gunakan rumus berikut:</p>" +
       "<p>det(A) = (a11 * a22) - (a12 * a21)</p>";
 
-    // Add to history
+    // Tambahkan ke riwayat
     let historyItem = [a11, a12, a21, a22].join(", ") + " = " + determinant;
     calculations_2x2.push(historyItem);
     renderHistory_2x2();
@@ -242,24 +241,24 @@ document.querySelectorAll("#matrixForm_2x2 input").forEach(function (input) {
   });
 });
 
- document.getElementById("selectOrder").addEventListener("change", function () {
-   var order = this.value;
-   if (order === "3x3") {
-     document.getElementById("matrix3x3").style.display = "block";
-     document.getElementById("matrix2x2").style.display = "none";
-   } else if (order === "2x2") {
-     document.getElementById("matrix3x3").style.display = "none";
-     document.getElementById("matrix2x2").style.display = "block";
-   }
- });
+document.getElementById("selectOrder").addEventListener("change", function () {
+  var order = this.value;
+  if (order === "3x3") {
+    document.getElementById("matrix3x3").style.display = "block";
+    document.getElementById("matrix2x2").style.display = "none";
+  } else if (order === "2x2") {
+    document.getElementById("matrix3x3").style.display = "none";
+    document.getElementById("matrix2x2").style.display = "block";
+  }
+});
 
-// Function to toggle info popup
+// Fungsi untuk toggle popup info
 function toggleInfoPopup() {
   const infoPopup = document.getElementById("infoPopup");
   infoPopup.classList.toggle("hidden");
 }
 
-// Function to close info popup when clicking outside
+// Fungsi untuk menutup popup info saat mengklik di luar
 function closeInfoPopup(event) {
   const infoPopup = document.getElementById("infoPopup");
   const infoButton = document.getElementById("infoButton");
@@ -268,8 +267,10 @@ function closeInfoPopup(event) {
     infoPopup.classList.add("hidden");
   }
 }
-// Add event listener to toggle info popup
-document.getElementById("infoButton").addEventListener("click", toggleInfoPopup);
+// Tambahkan event listener untuk toggle popup info
+document
+  .getElementById("infoButton")
+  .addEventListener("click", toggleInfoPopup);
 
-// Add event listener to close info popup when clicking outside
+// Tambahkan event listener untuk menutup popup info saat mengklik di luar
 document.addEventListener("click", closeInfoPopup);
