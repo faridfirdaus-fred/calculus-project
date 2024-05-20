@@ -42,7 +42,15 @@
         p {
             padding: 0;
             margin: 10px;
+            color: beige;
         }
+
+        h1 {
+          font-weight: bolder;
+          font-size: larger;
+          color: midnightblue;
+        }
+
 
         h2 {
             font-weight: bold;
@@ -159,16 +167,18 @@
     <script src="script.js"></script>
         <main>
             <section>
-                <p>Hai Mathers! Siapa disini yang masih ingat tentang materi determinan matriks? Biar segar kembali yuk kita flashback! Bayangkan determinan matriks seperti kode rahasia dari matriks itu sendiri. Nah, dengan tahu nilai determinannya, kita seolah punya kunci untuk membuka banyak informasi tersembunyi di dalam matriks tersebut. Yuk kita kupas bareng-bareng materi seru ini.</p>
+                <p style="font-style: italic;">Hai Mathers! Siapa disini yang masih ingat tentang materi determinan matriks dan bilangan kompleks? Biar segar kembali yuk kita flashback!</p>
+                <h1> 1. Determinan Matriks</h1>
+                <p style="font-style: italic;">Bayangkan determinan matriks seperti kode rahasia dari matriks itu sendiri. Nah, dengan tahu nilai determinannya, kita seolah punya kunci untuk membuka banyak informasi tersembunyi di dalam matriks tersebut. Yuk kita kupas bareng-bareng materi seru ini.</p>
                 <h2>A. Pengertian Determinan Matriks</h2>
                 <p> Determinan matriks merupakan selisih antara perkalian elemen-elemen pada diagonal utama dengan perkalian elemen-elemen pada diagonal sekunder. Dan hanya dapat dicari dengan matriks persegi. Determinan dari matriks A dapat ditulis det(A) atau |A|. Yang mana determinan matriks dapat dianggap secara intuitif sebagai "ukuran" matriks. Dalam matriks 2x2, determinan adalah hasil kali elemen diagonal utama dikurangi hasil kali elemen diagonal kedua. Namun, rumus untuk matriks 3x3 itu lebih kompleks. </p>
 
                 <h2>B. Sifat-Sifat Determinan Matriks</h2>
-                <p style="margin-bottom: 10px;">Tau gak Mathers ? sama halnya karakteristik unik dalam operasi fungsi lainnya, determinan matriks juga punya sifat-sifat uniknya tersendiri loh! Yuk, kita cek bareng-bareng gimana sifat-sifat ini bisa bantu kita jadi pro matriks.</p>
+                <p style="margin-bottom: 10px;" >Tau gak Mathers ? sama halnya karakteristik unik dalam operasi fungsi lainnya, determinan matriks juga punya sifat-sifat uniknya tersendiri loh! Yuk, kita cek bareng-bareng gimana sifat-sifat ini bisa bantu kita jadi pro matriks.</p>
                 <img src="img/sifat-sifat.jpg" alt="sifat-sifat determinan matriks">
 
                 <h2 style="margin-top: 10px;">C. Penggunaan Determinan Matriks</h2>
-                <p>Ada yang pernah kepikiran nggak, buat apa sih sebenernya determinan matriks itu? Jadi sebenernya determinan matriks tuh nggak cuma sekedar angka di dalam dunia matematika. Ada banyak banget manfaatnya lho! Jadi, yuk kita bahas bareng-bareng apa aja sih yang bisa kita lakuin dengan determinan matriks ini.</p>
+                <p style="font-style: italic;">Ada yang pernah kepikiran nggak, buat apa sih sebenernya determinan matriks itu? Jadi sebenernya determinan matriks tuh nggak cuma sekedar angka di dalam dunia matematika. Ada banyak banget manfaatnya lho! Jadi, yuk kita bahas bareng-bareng apa aja sih yang bisa kita lakuin dengan determinan matriks ini.</p>
                 <p>1. Pemecahan Sistem Persamaan Linear: Determinan digunakan untuk menentukan apakah suatu sistem persamaan linear memiliki solusi unik, tidak ada solusi, atau banyak solusi.</p>
                 <p>2. Transformasi Linear: Dalam geometri, determinan matriks digunakan untuk mengukur perubahan skala yang dihasilkan oleh transformasi linear.</p>
                 <p>3. Perhitungan Area dan Volume: Dalam geometri, determinan matriks digunakan untuk menghitung luas bidang atau volume objek dalam berbagai dimensi.</p>
@@ -191,7 +201,32 @@
                 <p style="margin-bottom: 10px;">Dalam kasus matriks ordo 3x3, determinan dihitung dengan menggunakan rumus yang melibatkan elemen-elemen matriks tersebut. Jenis matriks ini biasanya memiliki format sebagai berikut:</p>
                 <img src="img/ordo3.jpg" alt="Ordo 3x3">
 
-                <p style="margin-bottom: 10px;">Tentunya sudah semakin jelas ya, Mathers! Semoga penjelasan tadi membantu memperdalam pemahaman kita tentang determinan matriks.</p>
+                <p style="margin-bottom: 10px; font-style: italic;">Tentunya sudah semakin jelas ya, Mathers! Semoga penjelasan tadi membantu memperdalam pemahaman kita tentang determinan matriks.</p>
+
+              <h1 style="margin-bottom: 10px; margin-top: 20px;">2. Bilangan Kompleks</h1>
+                <h2>A. Pengertian Bilangan Kompleks</h2>
+                <p>Bilangan kompleks adalah bilangan yang terdiri dari bilangan real (x) dan imajiner(yi). Bentuk umumnya dinyatakan sebagai x+y𝑖, dengan x dan y adalah bilangan real, dan 𝑖 adalah unit imajiner yang didefinisikan sebagai akar kuadrat dari -1.</p>
+        
+                <h2>B. Sifat-Sifat Bilangan Kompleks</h2>
+                <p>Himpunan semua bilangan kompleks bersama operasi penjumlahan dan perkalian (ℂ ,+,•) membentuk bidang (field) kompleks. Adapun sifat-sifat yang berlaku pada bidang bilangan kompleks z1, z2 dan z3 adalah sebagai berikut:</p>
+                <p>1. z1+z2 ∈ ℂ dan z1•z2 ∈ ℂ . (sifat tertutup)</p>
+                <p>2. z1+z2 = z2+z1 dan z1•z2 = z2•z1 (sifat komutatif)</p>
+                <p>3. (z1+z2)+z3 = z1+(z2+z3) dan (z1•z2) •z3= z1•(z2•z3) (sifat asosiatif)</p>
+                <p>4. z1•(z2+z3)=(z1•z2)+(z1•z3) (sifat distributif)</p>
+                <p>5. Ada 0=0+i0 ∈ℂ , sehingga z+0 = z (0 elemen netral penjumlahan)</p>
+                <p>6. Ada 1=1+i0 ∈ ℂ , sehingga z•1= z (1 elemen netral perkalian)</p>
+                <p>7. Untuk setiap z = x+iyℂ, ada –z = –x–iy sehingga z+(–z) = 0 </p>
+                <p>8. Untuk setiap z = x+iyℂ, ada z-1 = 1/z, sehingga z•z-1 = 1.</p>
+
+                <h2 style="margin-bottom: 5px;">C. Operasi Bilangan Kompleks</h2>
+                <p>Operasi bilangan kompleks ini sama seperti operasi bilangan lainnya, ada penjumlahan, pengurangan, perkalian, dan pembagian. Namun cara mengoperasikannya mungkin sedikit berbeda dari biasanya, yuk kita lihat lewat contoh berikut ini:</p>
+                <img src="operasibilkom.jpg" alt="Ordo 2x2">
+                <h2>D. Representasi Bilangan Kompleks</h2>
+                <p style="font-style: italic; margin-bottom: 5px;">Mathers, bilangan kompleks ini bisa direpresentasikan atau diimplementasikan dalam berbagai bentuk loh, yuk kita lihat!</p>
+                <img src="repbilkom.jpg" alt="Ordo 2x2">
+
+                <p style="font-style: italic;">Gimana seru-seru kan materinya? Semoga penjelasan tadi bisa menambah pemahaman kalian tentang konsep-konsep penting dalam bilangan kompleks dan juga determinan matriks. Jangan lupa untuk terus berlatih dan eksplorasi lebih dalam lagi, karena matematika itu seperti petualangan yang tak pernah habis. Selamat belajar dan semoga sukses!</p>
+                
             </section>
         </main>
 
